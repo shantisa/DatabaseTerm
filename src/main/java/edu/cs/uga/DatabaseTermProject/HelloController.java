@@ -1,12 +1,13 @@
 package edu.cs.uga.DatabaseTermProject;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 
-@RestController
+@Controller
 public class HelloController {
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
+    @GetMapping({"/", "/home"})
+    public String index(Model model) {
+        return "home";
     }
 }
