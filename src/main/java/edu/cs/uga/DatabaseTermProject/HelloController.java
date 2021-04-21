@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 
 @Controller
 public class HelloController {
-    @GetMapping({"/"}) // , "home"
+    @GetMapping({"/", "home"})
     public String index(Model model) {
         return "home";
     }
