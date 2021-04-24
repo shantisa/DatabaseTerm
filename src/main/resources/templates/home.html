@@ -2,12 +2,18 @@
 <html lang="en">
     <head>
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
             body {
                 background-color: powderblue;
             }
 
-            h1 {
-                color: black;
+            ul {
+                padding-left: 1em;
+                list-style: none;
             }
         </style>
         <meta charset="UTF-8">
@@ -15,6 +21,36 @@
     </head>
 
     <body>
-        <h1>Hello, Elgarians</h1>
+        <ul>
+            <li>
+                <a></i> Home</a>
+            </li>
+            <li>
+                <label for="nav-search">Search links</label>
+                    <input type="search" id="nav-search" placeholder="Search for tools">
+            </li>
+            <li>
+                <span>Popular tools</span>
+            </li>
+            <li>
+                <span>Categories</span>
+            </li>
+            <ul>
+                <li>
+                    <a data-toggle="collapse">American</a>
+                    <ul>
+                        <li>
+                            GMC
+                        </li>
+                    </ul>
+                </li>
+                <li>European
+                    <ul>
+                        <li>Audi
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </ul>
     </body>
 </html>
