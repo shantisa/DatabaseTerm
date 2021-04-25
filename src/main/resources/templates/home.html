@@ -2,12 +2,30 @@
 <html lang="en">
     <head>
         <style>
+            
             body {
                 background-color: powderblue;
             }
 
-            h1 {
-                color: black;
+            h2 { 
+                display: inline;
+                padding-right: 4em;
+            }
+            
+            input {
+                padding-left: 4em;
+                text-align: center;
+            }
+
+            nav ul {
+                width: 100%;
+            }
+
+            nav ul li {
+                /* margin-right: 2em; */
+                width: 14.28%;
+                float: left;
+                display: inline;
             }
         </style>
         <meta charset="UTF-8">
@@ -15,6 +33,19 @@
     </head>
 
     <body>
-        <h1>Hello, Elgarians</h1>
+        <h2>Brazilian Overstock</h2>
+        <!-- <label for="nav-search">Search links</label> -->
+        <input type="search" id="nav-search" placeholder="Search for anything">
+        <nav>
+            <ul>
+                <li>Best Sellers</li>
+                <li>Most Reviewed</li>
+                <li>Home</li>
+                <li>Products</li>
+                <li>Categories</li>
+                <li>Sellers</li>
+                <li>Customers</li>
+            </ul>
+        </nav>
     </body>
 </html>
