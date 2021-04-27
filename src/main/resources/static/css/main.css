@@ -1,0 +1,189 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* header style */
+#nav_style {
+    background: navy;
+}
+
+#brazil_logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    width: 186px;
+    height: 106px;
+}
+
+.search_box {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    width: 100%;
+    font-size: 0;
+    text-align: center;
+}
+.search_box input {
+    width: 50%;
+    height: 16px;
+    padding: 3px;
+    font-size: medium;
+}
+.search_box button {
+    background-color: white;
+    height: 24px;
+    vertical-align: bottom;
+}
+.nav_menu {
+    width: 100%;
+    display: inline-block;
+    border-top: 1px solid white;
+}
+
+.nav_menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.nav_menu a:hover {
+    text-decoration: underline;
+}
+.nav_menu li {
+    float: left;
+    width: 18%;
+    position: relative;
+}
+.nav_menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 105%;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+    background-color: navy;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.nav_menu ul ul li {
+    float: none;
+    font-size: 94%;
+    width: 100%
+}
+.nav_menu ul ul {
+    display: none;
+    position: absolute;
+    background-color: navy;
+    width: 100%
+}
+.nav_menu ul li:hover>ul {
+    display: block;
+}
+.nav_menu img {
+    vertical-align: top;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+#header_style::after {
+    clear: both;
+}
+
+/* Product Page */
+#sort-head{
+    float: left;
+    margin: 10px;
+}
+#filter-product{
+    clear: both;
+    margin: 10px;
+    width: 180px;
+    margin-left: 1px;
+}
+
+#product-block{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto auto;
+    column-width: 200px;
+    column-count: auto;
+    margin: 10px;
+}
+.product_square {
+    margin: auto;
+    margin-bottom: 60px;
+}
+.products {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.products p {
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 5px;
+}
+.products img {
+    /* Centers the image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.products:visited {
+    color: black;
+}
+.products:hover {
+    text-decoration: underline;
+}
+
+#page_control, #page_current{
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#page_control2{
+    clear: both;
+    margin-left: 10px;
+}
+
+/* Single Product Page */
+
+
+/* Homepage */
+
+
+/* Seller Page */
+
+
+/* Category Page */
+#sort-head2{
+    float: left;
+    margin: 10px;
+}
+#category-filter{
+    clear: both;
+    margin: 10px;
+    width: 200px;
+    margin-left: 1px;
+}
+
+/* Customer Page */
+
+
+/* Footer */
+#copy {
+    text-align: center;
+    color: white;
+    font-size: 82%;
+}
+
+footer {
+    margin-top:50px;
+    clear: both;
+    border: 2px solid navy;
+    background-color: navy;
+    bottom: 0;
+}

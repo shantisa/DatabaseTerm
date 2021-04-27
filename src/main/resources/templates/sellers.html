@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments :: html_head">
+        <title>Meet the Sellers</title>
+    </head>
+
+    <body>
+        <div th:replace="fragments :: navigation"></div>
+        <!--- Add content here, example of how to get data from database below -->
+        <h1>Hello, Elgarians</h1>
+        <table>
+            <thead>
+            <tr>
+                <th> Zip Code </th>
+                <th> Seller </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${codes.isEmpty()}">
+            <td colspan="2"> No Zip Code Available </td>
+            </tr>
+            <tr th:each="code : ${codes}">
+                <td><span th:text="${code}"> Zip Code </span></td>
+            </tr>
+            <tr th:each="id : ${ids}">
+                <td><span th:text="${id}"> Product Category </span></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:replace="fragments :: footer"></div>
+    </body>
+</html>

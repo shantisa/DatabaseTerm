@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- This fragments file contains all of the reusable code for the head, navigation bar(menu), and footer-->
+    <head th:fragment="html_head">
+        <meta charset="UTF-8">
+        <link th:href="@{/css/main.css}" rel="stylesheet">
+        <link th:href="@{/css/normalize.css}" rel="stylesheet">
+    </head>
+    <body>
+        <div th:fragment="navigation" id="nav_style">
+            <a href="/home"><img id="brazil_logo" th:src="@{/images/logo.jpg}"></a>
+
+            <!-- <label for="nav-search">Search links</label> -->
+            <form class="search_box">
+                <input type="text" placeholder="Search for an ID(product, customer, seller)" name="query">
+                <button>
+                    <img th:src="@{/images/search.svg}" alt="Search">
+                </button>
+            </form>
+
+            <div class="nav_menu">
+                <nav>
+                    <ul>
+                        <li><a href="/home"><b>Home</b></a></li>
+                        <li><a href="/products"><b>Products</b></a></li>
+                        <li><a href="/categories"><b>Categories</b></a></li>
+                        <li><a href="/sellers"><b>Sellers</b></a></li>
+                        <li><a href="/customer"><img th:src="@{/images/account_profile.svg}" alt="Customer"><b>Customers</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <footer th:fragment="footer">
+            <p id="copy">Copyright &copy; 2021 Brazilian Overstock. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
