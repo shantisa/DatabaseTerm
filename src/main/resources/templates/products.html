@@ -8,14 +8,22 @@
     <body>
         <div th:replace="fragments :: navigation"></div>
 
+        <p id="disclaimer1"><b><i>Disclaimer: The productIDs listed below represents the product name.
+            This is real commercial data from the Brazilian ecommerce public dataset of orders made at Olist Store.
+            The creators of this dataset removed the actual names for privacy purposes.</i></b></p>
+
+        <p id="product_details" th:text="'There are a total of ' + ${count} + ' products in this dataset.' +
+           ' The total average price of all items are $' + ${avg} +'.' +
+          ' The minimum price of items is $' + ${min} + ' , while the maximum price is $' + ${max} + '.'"></p>
+
         <div class="products">
             <p id="sort-head"><b>Sort By: </b></p>
             <form action="/products" method="get" >
                 <select  onchange="this.form.submit()" name="sort" id="filter-product">
-                    <option value="best-seller">Best Sellers</option>
+                    <option value="sort-select">Select Sort</option>
+                    <option value="highToLow">Price: High to Low</option> <!-- Default is high to low-->
                     <option value="lowToHigh">Price: Low to High</option>
-                    <option value="highToLow">Price: High to Low</option>
-                    <option value="most-review">Highest Rating</option>
+                    <option value="best-seller">Best Sellers</option>
                 </select>
             </form>
 
@@ -23,10 +31,10 @@
             <!-- Displays all the products -->
                 <div id="product-block" >
                     <div class="product_square" th:each="product : ${products}">
-                        <a th:href="@{${'/product?id=' + product.getId()}}" class='products'>
+                        <a th:href="@{${'/product?id=' + product.getId()}}" class='product-link'>
                         <img th:src="@{${'https://loremflickr.com/300/200/' + product.getCategory() +'?random=' + product.getId()}}" alt='Item'>
                         <p th:text="${product.getId()}">Product ID</p>
-                        <p th:text="${product.getPrice()}">Product Price</p>
+                        <p th:text="'$'+ ${product.getPrice()}">Product Price</p>
                         </a>
                     </div>
                 </div>
@@ -36,7 +44,6 @@
                 <p id="page_current" th:text="${page}"></p>
                 <a id="page_control2" th:href="@{'/products?page=' + ${next} + '&sort='+ ${sort}}"  th:with="next=(${page}+1)"><button type="button">Next</button></a>
             </div>
-
         </div>
 
         <div th:replace="fragments :: footer"></div>

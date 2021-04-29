@@ -6,14 +6,42 @@
     <body>
         <div th:replace="fragments :: navigation"></div>
 
-        <div class="categories">
-            <p id="sort-head2"><b>Sort By: </b></p>
-            <select name="category-filter" id="category-filter">
-                <option value="best-seller-cat">Best Selling Categories</option>
-                <option value="most-review-cat">Highest Reviewed</option>
-            </select>
+            <p id="product_details" th:text="'There are a total of ' + ${count} + ' categories in this dataset.' +
+           ' The total average price of all categories is $' + ${avg} +'.' +
+          ' The category with cheapest average has an average price of $' + ${min} +
+           ' , while the category with the most expensive average has an average price of $' + ${max} + '.'"></p>
 
-            <!--- Add more content here -->
+            <div class="products">
+                <p id="sort-head2"><b>Sort By: </b></p>
+                <form action="/categories" method="get" >
+                    <select onchange="this.form.submit()" name="sort" id="category-filter">
+                        <option value="sort-select">Select Sort</option>
+                        <option value="highToLow">Average Price: High to Low</option> <!-- Default is high to low-->
+                        <option value="lowToHigh">Average Price: Low to High</option>
+                        <option value="best-seller">Best Selling Categories</option>
+                    </select>
+                </form>
+
+
+                <!-- Displays all the products -->
+                <div id="product-block" >
+                    <div class="product_square" th:each="category : ${categories}">
+                        <a th:href="@{${'/category?id=' + category.getName()}}" class='product-link'>
+                            <img th:src="@{${'https://loremflickr.com/300/200/' + category.getName()}}" alt='Item'>
+                            <p th:text="${category.getName()}">Category Name</p>
+                            <p th:text="'The minimum price of items in this category is $'+ ${category.getMin()}
+                            + ' and the maximum price is $' + ${category.getMax()}">Category Prices</p>
+                            <p th:text="'The average price of items in this category is $' + ${category.getAvg()}">Category Name</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="control">
+                    <a id="page_control" th:href="@{'/categories?page=' + ${prev} + '&sort='+ ${sort}}" th:with="prev=(${page} -1)"><button type="button">Previous</button></a>
+                    <p id="page_current" th:text="${page}"></p>
+                    <a id="page_control2" th:href="@{'/categories?page=' + ${next} + '&sort='+ ${sort}}"  th:with="next=(${page}+1)"><button type="button">Next</button></a>
+                </div>
+            </div>
 
         </div>
 
