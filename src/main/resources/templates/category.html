@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+    <title>Category View</title>
+</head>
+<body>
+<div th:replace="fragments :: navigation"></div>
+
+<!-- Add Content Here -->
+
+<div id="singleProduct">
+
+    <!-- Display the product information -->
+    <img th:src="@{${'https://loremflickr.com/300/200/' + category.getName()}}"alt='Item'>
+    <main>
+        <h2 th:text="${category.getName()}">Category Name</h2>
+        <h3 th:text="${'Average Price of Items: $' + category.getAvg()}">Category Average</h3>
+        <h3 th:text="${'Minimum Price of Items: $' + category.getMin()}">Category Min</h3>
+        <h3 th:text="${'Maximum Price of Items: $' + category.getMax()}">Category Max</h3>
+        <h3 th:text="${'Average Review Score: ' + category.getScore()}">Category Score</h3>
+        <h3 th:text="${'Products in this category sold ' + category.getSold() + ' times'}">Product Category</h3>
+        <h3 th:if="${category.getAvg()} > ${avg}" th:text="${'This category average is more expensive than average price of all categories ' + avg}"></h3>
+        <h3 th:if="${category.getAvg()} < ${avg}" th:text="${'This category average is less expensive than average price of all categories ' + avg}"></h3>
+    </main>
+    <!-- Display the customers interested in this professor -->
+    <table>
+        <thead>
+        <tr>
+            <th> Product ID</th>
+            <th> Price</th>
+            <th> Average Review Score</th>
+            <th> Number of Times Purchased</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td><a th:href="@{${'/product?id=' + product.getId()}}" class="customer-link"><span
+                    th:text="${product.getId()}"> Product ID </span></a></td>
+            <td><span th:text="${product.getPrice()}"> Product Amount </span></td>
+            <td><span th:text="${product.getScore()}"> Review Score </span></td>
+            <td><span th:text="${product.getSold()}"> Bought </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

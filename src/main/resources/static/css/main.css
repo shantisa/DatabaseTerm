@@ -164,8 +164,40 @@ body {
 }
 
 /* Single Product Page */
+#singleProduct img{
+    float: left;
+    width: 40%;
+    margin: 34px;
+}
+#singleProduct main{
+    display: block;
+    text-align: left;
 
+}
+#singleProduct h2{
+    text-align: center;
 
+}
+#singleProduct table, th, td {
+    border: 1.5px solid black;
+    border-collapse: collapse;
+}
+#singleProduct th{
+    text-align: center;
+    padding: 5px;
+}
+#singleProduct td{
+    padding: 3px;
+    text-align: center;
+}
+.category-link{
+    color:black;
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+.customer-link{
+    color: black;
+}
 /* Homepage */
 
 
@@ -183,9 +215,6 @@ body {
     width: 200px;
     margin-left: 1px;
 }
-
-/* Customer Page */
-
 
 /* Footer */
 #copy {

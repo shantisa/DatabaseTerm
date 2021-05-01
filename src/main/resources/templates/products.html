@@ -12,9 +12,10 @@
             This is real commercial data from the Brazilian ecommerce public dataset of orders made at Olist Store.
             The creators of this dataset removed the actual names for privacy purposes.</i></b></p>
 
-        <p id="product_details" th:text="'There are a total of ' + ${count} + ' products in this dataset.' +
-           ' The total average price of all items are $' + ${avg} +'.' +
-          ' The minimum price of items is $' + ${min} + ' , while the maximum price is $' + ${max} + '.'"></p>
+        <p id="product_details" th:text="'There are a total of ' + ${general.getCount()} + ' products in this dataset.' +
+           ' The total average price of all items are $' + ${general.getAvgPrice()} +'.' +
+          ' The minimum price of items is $' + ${general.getMinPrice()} +
+          ' , while the maximum price is $' + ${general.getMaxPrice()} + '.'"></p>
 
         <div class="products">
             <p id="sort-head"><b>Sort By: </b></p>

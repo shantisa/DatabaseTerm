@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+    <title>Product View</title>
+</head>
+<body>
+<div th:replace="fragments :: navigation"></div>
+
+<!-- Add Content Here -->
+
+<div id="singleProduct">
+
+    <!-- Display the product information -->
+    <img th:src="@{${'https://loremflickr.com/300/200/' + product.getCategory() +'?random=' + product.getId()}}"
+         alt='Item'>
+    <main>
+        <h2 th:text="${product.getId()}">Product ID</h2>
+        <h3 th:text="${'Price: $' + product.getPrice()}">Product Price</h3>
+        <a class="category-link" th:text="${'Category: ' + product.getCategory()}" th:href="@{${'/category?id=' + product.getCategoryId()}}"></a>
+        <h3 th:text="${'Average Review Score: ' + product.getScore()}">Product Category</h3>
+        <h3 th:text="${'This product was sold ' + product.getSold() + ' times'}">Product Category</h3>
+        <h3 th:if="${product.getPrice()} > ${avg}" th:text="${'This product is above the total average ' + avg}"></h3>
+        <h3 th:if="${product.getPrice()} < ${avg}" th:text="${'This product is below the total average ' + avg}"></h3>
+    </main>
+    <!-- Display the customers interested in this professor -->
+    <table>
+        <thead>
+        <tr>
+            <th> Customer ID</th>
+            <th> Number of Times Purchased</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td><a th:href="@{${'/customer?id=' + customer.getId()}}" class="customer-link"><span
+                    th:text="${customer.getId()}"> Customer ID </span></a></td>
+            <td><span th:text="${customer.getBought()}"> Customer Purchased </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
