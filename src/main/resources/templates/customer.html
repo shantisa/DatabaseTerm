@@ -1,13 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments :: html_head">
-        <title>Customer</title>
-    </head>
-    <body>
-        <div th:replace="fragments :: navigation"></div>
+<head th:replace="fragments :: html_head">
+    <title>Customer View</title>
+</head>
+<body>
+<div th:replace="fragments :: navigation"></div>
 
-        <!--- Add content here -->
+<!-- Add Content Here -->
 
-        <div th:replace="fragments :: footer"></div>
-    </body>
+<div id="singleProduct">
+    <div id="singleSeller">
+        <!-- Display the seller information -->
+        <main>
+            <h2 th:text="${customer.getId()}">Customer Name</h2>
+            <h3 th:text="${'Customer Address: ' + customer.getCity() + ', ' + customer.getState() +', '
+            + customer.getZipCode()}">Customer Address</h3>
+            <h3 th:text="${'This customer spent a total of $' + customer.getSpent() + ' on products'}">Spent</h3>
+            <h3 th:text="${'This customer bought ' + customer.getBought() + ' items'}">Customer Bought</h3>
+            <h3>Here is a list of products that were bought by this customer: </h3>
+        </main>
+
+        <!-- Display the products bought by the customer-->
+        <table>
+            <thead>
+            <tr>
+                <th> Product ID</th>
+                <th> Products Bought</th>
+                <th> Products Delivered to Customer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${productSold}">
+                <td><a th:href="@{${'/product?id=' + product.getId()}}" class="customer-link"><span
+                        th:text="${product.getId()}"> Product ID </span></a></td>
+                <td><span th:text="${product.getSold()}"> Products Bought </span></td>
+                <td><span th:text="${product.getDelivered()}"> Products Delivered </span></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Display the sellers near the customer-->
+        <h3 id="sellerNear">List of the Top 20 nearest sellers to this customer location (based on distance)</h3>
+        <table>
+            <thead>
+            <tr>
+                <th> Seller ID</th>
+                <th> Seller City</th>
+                <th> Seller State </th>
+                <th> Distance from Customer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="seller : ${seller}">
+                <td><a th:href="@{${'/seller?id=' + seller.getId()}}" class="customer-link"><span
+                        th:text="${seller.getId()}"> Seller ID </span></a></td>
+                <td><span th:text="${seller.getCity()}"> Seller City </span></td>
+                <td><span th:text="${seller.getState()}"> Seller State </span></td>
+                <td><span th:text="${seller.getDistance()}"> Distance from Customer< </span></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+<div th:replace="fragments :: footer"></div>
+</body>
 </html>

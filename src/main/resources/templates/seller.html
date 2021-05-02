@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head">
+    <title>Seller View</title>
+</head>
+<body>
+<div th:replace="fragments :: navigation"></div>
+
+<!-- Add Content Here -->
+
+<div id="singleProduct">
+    <div id="singleSeller">
+        <!-- Display the seller information -->
+        <main>
+            <h2 th:text="${seller.getId()}">Seller Name</h2>
+            <h3 th:text="${'Seller Address: ' + seller.getCity() + ', ' + seller.getState() +', '
+            + seller.getZipCode()}">Seller Address</h3>
+            <h3 th:text="${'This seller sold ' + seller.getSold() + ' items'}">Sold</h3>
+            <h3 th:text="${'This seller delivered ' + seller.getDelivered() + ' items'}">Delivered</h3>
+            <h3 th:text="${'Seller Dependability Score (from 0(lowest) to 1(highest)): ' + seller.getRatio()}">Seller Delivered/Undelivered Ratio</h3>
+            <h3>Here is a list of products that are sold by this seller: </h3>
+        </main>
+
+
+        <!-- Display the products sold by this seller-->
+        <table>
+            <thead>
+            <tr>
+                <th> Product ID</th>
+                <th> Products Sold</th>
+                <th> Products Delivered </th>
+                <th> Seller Dependability Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${productSold}">
+                <td><a th:href="@{${'/product?id=' + product.getId()}}" class="customer-link"><span
+                        th:text="${product.getId()}"> Product ID </span></a></td>
+                <td><span th:text="${product.getSold()}"> Product Sold </span></td>
+                <td><span th:text="${product.getDelivered()}"> Product Delivered </span></td>
+                <td><span th:text="${product.getRatio()}"> Seller Dependability Score </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

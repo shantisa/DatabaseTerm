@@ -22,7 +22,8 @@
         <h3 th:if="${product.getPrice()} > ${avg}" th:text="${'This product is above the total average ' + avg}"></h3>
         <h3 th:if="${product.getPrice()} < ${avg}" th:text="${'This product is below the total average ' + avg}"></h3>
     </main>
-    <!-- Display the customers interested in this professor -->
+
+    <!-- Display the customers interested in this product -->
     <table>
         <thead>
         <tr>

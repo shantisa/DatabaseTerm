@@ -141,7 +141,7 @@ body {
     margin: 10px;
     margin-top: 20px;
 }
-#product_details{
+#product_details, #product_details0, #product_details1, #brazil-info{
     margin: 10px;
     margin-top: 20px;
     font-style: italic;
@@ -199,10 +199,26 @@ body {
     color: black;
 }
 /* Homepage */
-
+#homepage_content h2{
+    margin: 10px;
+    text-align: center;
+}
+#product_details1{
+    margin-bottom: 100px;
+}
+/* Not Found Searh*/
+#not_Found{
+    margin: 10px;
+    margin-bottom: 355px;
+    text-align: left;
+}
 
 /* Seller Page */
 
+/* Single seller view */
+#singleSeller {
+    margin: 30px;
+}
 
 /* Category Page */
 #sort-head2{

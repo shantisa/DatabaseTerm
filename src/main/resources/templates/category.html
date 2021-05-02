@@ -10,8 +10,8 @@
 
 <div id="singleProduct">
 
-    <!-- Display the product information -->
-    <img th:src="@{${'https://loremflickr.com/300/200/' + category.getName()}}"alt='Item'>
+    <!-- Display the category information -->
+    <img th:src="@{${'https://loremflickr.com/300/200/' + category.getName()}}" alt='Item'>
     <main>
         <h2 th:text="${category.getName()}">Category Name</h2>
         <h3 th:text="${'Average Price of Items: $' + category.getAvg()}">Category Average</h3>
@@ -22,7 +22,8 @@
         <h3 th:if="${category.getAvg()} > ${avg}" th:text="${'This category average is more expensive than average price of all categories ' + avg}"></h3>
         <h3 th:if="${category.getAvg()} < ${avg}" th:text="${'This category average is less expensive than average price of all categories ' + avg}"></h3>
     </main>
-    <!-- Display the customers interested in this professor -->
+
+    <!-- Display the products sold in this category -->
     <table>
         <thead>
         <tr>
@@ -36,7 +37,7 @@
         <tr th:each="product : ${products}">
             <td><a th:href="@{${'/product?id=' + product.getId()}}" class="customer-link"><span
                     th:text="${product.getId()}"> Product ID </span></a></td>
-            <td><span th:text="${product.getPrice()}"> Product Amount </span></td>
+            <td><span th:text="'$' + ${product.getPrice()}"> Product Amount </span></td>
             <td><span th:text="${product.getScore()}"> Review Score </span></td>
             <td><span th:text="${product.getSold()}"> Bought </span></td>
         </tr>

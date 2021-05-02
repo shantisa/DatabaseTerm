@@ -9,6 +9,35 @@
         <div th:replace="fragments :: navigation"></div>
 
         <!--- Add content here -->
+        <p id="disclaimer1"><b><i>Disclaimer: The productIDs, sellerIDs, and the customerIDs listed on each page will represent
+            the name. This is real commercial data from the Brazilian ecommerce public dataset of orders made at Olist Store.
+            The creators of this dataset removed the actual names for privacy purposes. Thank you for acknowledging this
+            information. The information below list information about this dataset.</i></b></p>
+
+        <div id="homepage_content">
+            <h2>Brazilian E-commerce Public Dataset Information</h2>
+
+            <p id="brazil-info">This dataset contains information about 100,000 orders made at multiple marketplaces over the
+                course of 2 years in Brazil. It also has information about customers, sellers, products, reviews,
+                and the location of both sellers and customers. The data shown on this website will find interesting
+                relationships between the customer and sellers. These relationships will find
+                which products or categories are selling better, how loyal customers are to sellers and how
+                dependable sellers can be, whether good reviews correlate with sales. </p>
+
+            <p id="product_details0" th:text="'This dataset contains a total of '
+                    + ${countCustomer} + ' customers and ' + ${countSeller} + ' sellers.'"></p>
+
+            <p id="product_details" th:text="'There are a total of ' + ${countCategory} + ' categories in this dataset.' +
+                   ' The total average price of all categories is $' + ${avgCategory} +'.' +
+                  ' The category with cheapest average has an average price of $' + ${minCategory} +
+                   ' , while the category with the most expensive average has an average price of $' + ${maxCategory} + '.'"></p>
+
+            <p id="product_details1" th:text="'There are a total of ' + ${countProduct} + ' products in this dataset.' +
+                   ' The total average price of all items are $' + ${avgProduct} +'.' +
+                  ' The minimum price of items is $' + ${minProduct} +
+                  ' , while the maximum price is $' + ${maxProduct} + '.'"></p>
+
+        </div>
 
         <div th:replace="fragments :: footer"></div>
     </body>
