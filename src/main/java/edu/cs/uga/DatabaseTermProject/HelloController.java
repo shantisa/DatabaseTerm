@@ -425,25 +425,31 @@ public class HelloController {
 
     //sellers page
     @GetMapping("/sellers")
-    public String seller(Model model) {
-        List<Integer> zip_codes = new ArrayList<>();
-        List<String> seller_id = new ArrayList<>();
+    public String seller(@RequestParam(value = "page", defaultValue = "0") int page,
+                         Model model) {
+        List<Seller> sellers = new ArrayList<>();
+
         try {
             Statement statement = conn.createStatement();
-            ResultSet res = statement.executeQuery("SELECT zip_code FROM sellers");
+            ResultSet res = statement.executeQuery("select seller_id, count(orders.order_id) " +
+                    "as delivered,(select count(orders.order_id) from order_items " +
+                    "join orders on order_items.order_id = orders.order_id " +
+                    "where seller_id = oi.seller_id group by seller_id) as sold  from order_items oi " +
+                    "join orders on oi.order_id = orders.order_id " +
+                    "where order_status = 'delivered' " +
+                    "group by seller_id "+
+                    "LIMIT " + page * 100 + ",100");
             while (res.next()) {
-                zip_codes.add(res.getInt("zip_code"));
-            }
-            statement = conn.createStatement();
-            res = statement.executeQuery("SELECT seller_id FROM sellers");
-            while (res.next()) {
-                seller_id.add(res.getString("seller_id"));
+                sellers.add(new Seller(res.getString("seller_id"),
+                        res.getInt("sold"),
+                        res.getInt("delivered")
+                ));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        model.addAttribute("codes", zip_codes);
-        model.addAttribute("ids", seller_id);
+        model.addAttribute("sellers", sellers);
+        model.addAttribute("page", page);
         return "sellers";
     }
 
@@ -508,7 +514,29 @@ public class HelloController {
 
     //customer page
     @GetMapping("/customers")
-    public String customerView(Model model) {
+    public String customerView(@RequestParam(value = "page", defaultValue = "0") int page,
+                               Model model) {
+        List<Customer> customers = new ArrayList<>();
+
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet res = statement.executeQuery("select orders.customer_id, round(sum(price),2) as spent, " +
+                    "count(order_items.product_id) as productsBought from order_items " +
+                    "join orders on order_items.order_id = orders.order_id " +
+                    "group by orders.customer_id "+
+                    "LIMIT " + page * 100 + ",100");
+            while (res.next()) {
+                customers.add(new Customer(res.getString("customer_id"),
+                        res.getInt("productsBought"),
+                        res.getInt("spent")
+                ));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        model.addAttribute("customers", customers);
+        model.addAttribute("page", page);
+
         return "customers";
     }
 

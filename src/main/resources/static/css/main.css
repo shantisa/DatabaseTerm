@@ -148,6 +148,7 @@ body {
 }
 #control{
     margin-left: 600px;
+    margin-top: 30px;
 }
 #page_current{
     margin-top: 5px;
@@ -214,7 +215,10 @@ body {
 }
 
 /* Seller Page */
-
+.tableSeller{
+    margin-left: auto;
+    margin-right: auto;
+}
 /* Single seller view */
 #singleSeller {
     margin: 30px;

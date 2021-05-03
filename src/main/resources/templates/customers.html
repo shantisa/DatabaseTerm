@@ -8,6 +8,37 @@
 
         <!--- Add content here -->
 
+        <p id="disclaimer1"><b><i>Disclaimer: The customerID's listed below represents the customer name.
+            This is real commercial data from the Brazilian ecommerce public dataset of orders made at Olist Store.
+            The creators of this dataset removed the actual names for privacy purposes.</i></b></p>
+
+        <!-- Displays all the sellers -->
+        <div id="singleProduct">
+                <table class="tableSeller">>
+                    <thead>
+                    <tr>
+                        <th> Customer ID</th>
+                        <th> Number of Items Bought</th>
+                        <th> Spending Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="customer : ${customers}">
+                        <td><a th:href="@{${'/customer?id=' + customer.getId()}}" class="customer-link"><span
+                                th:text="${customer.getId()}">Customer ID </span></a></td>
+                        <td><span th:text="${customer.getBought()}"> Customer Bought </span></td>
+                        <td><span th:text="${'$' + customer.getSpent()}"> Customer Spending Amount </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+
+        <div id="control">
+            <a id="page_control" th:href="@{'/customers?page=' + ${prev}}" th:with="prev=(${page} -1)"><button type="button">Previous</button></a>
+            <p id="page_current" th:text="${page}"></p>
+            <a id="page_control2" th:href="@{'/customers?page=' + ${next}}"  th:with="next=(${page}+1)"><button type="button">Next</button></a>
+        </div>
+
         <div th:replace="fragments :: footer"></div>
     </body>
 </html>

@@ -7,26 +7,38 @@
     <body>
         <div th:replace="fragments :: navigation"></div>
         <!--- Add content here, example of how to get data from database below -->
-        <h1>Hello, Elgarians</h1>
-        <table>
-            <thead>
-            <tr>
-                <th> Zip Code </th>
-                <th> Seller </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:if="${codes.isEmpty()}">
-            <td colspan="2"> No Zip Code Available </td>
-            </tr>
-            <tr th:each="code : ${codes}">
-                <td><span th:text="${code}"> Zip Code </span></td>
-            </tr>
-            <tr th:each="id : ${ids}">
-                <td><span th:text="${id}"> Product Category </span></td>
-            </tr>
-            </tbody>
-        </table>
+        <p id="disclaimer1"><b><i>Disclaimer: The sellerID's listed below represents the seller name.
+            This is real commercial data from the Brazilian ecommerce public dataset of orders made at Olist Store.
+            The creators of this dataset removed the actual names for privacy purposes.</i></b></p>
+
+        <!-- Displays all the sellers -->
+        <div id="singleProduct">
+                <table class="tableSeller">
+                    <thead>
+                    <tr>
+                        <th> Seller ID</th>
+                        <th> Products Sold</th>
+                        <th> Products Delivered </th>
+                        <th> Seller Dependability Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="seller : ${sellers}">
+                        <td><a th:href="@{${'/seller?id=' + seller.getId()}}" class="customer-link"><span
+                                th:text="${seller.getId()}">Seller ID </span></a></td>
+                        <td><span th:text="${seller.getSold()}"> Seller Sold </span></td>
+                        <td><span th:text="${seller.getDelivered()}"> Seller Delivered </span></td>
+                        <td><span th:text="${seller.getRatio()}"> Seller Dependability Score </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+
+        <div id="control">
+            <a id="page_control" th:href="@{'/sellers?page=' + ${prev}}" th:with="prev=(${page} -1)"><button type="button">Previous</button></a>
+            <p id="page_current" th:text="${page}"></p>
+            <a id="page_control2" th:href="@{'/sellers?page=' + ${next}}"  th:with="next=(${page}+1)"><button type="button">Next</button></a>
+        </div>
 
         <div th:replace="fragments :: footer"></div>
     </body>
