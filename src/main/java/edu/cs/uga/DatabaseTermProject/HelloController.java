@@ -12,10 +12,16 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/**
+ *  This class represents the Controller
+ */
 @Controller
 public class HelloController {
     Connection conn;
 
+    /**
+     *  This constructor helps establish a connection to the database
+     */
     public HelloController() {
         //try-catch for when there is no connection to the database
         try {
@@ -27,6 +33,15 @@ public class HelloController {
 
 
     //home page
+
+    /**
+     * Display a view of the homepage, which gives an overview of the
+     * database. It also contains information about the products, categories,
+     * sellers, and customer dataset.
+     *
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/", "/home"})
     public String index(Model model) {
 
@@ -89,6 +104,18 @@ public class HelloController {
     }
 
     //products page
+
+    /**
+     * Display the products and their prices on the products page.
+     * There is a filter that sorts the queries chosen by the user, whether
+     * if it's for displaying the best-selling items or products sorted by price.
+     * The list is limited to 20 items at a time and supports pagination.
+     *
+     * @param page the page number
+     * @param sort a query filter
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/products"})
     public String products(@RequestParam(value = "page", defaultValue = "0") int page,
                            @RequestParam(value = "sort", defaultValue = "highToLow") String sort,
@@ -176,13 +203,21 @@ public class HelloController {
     }
 
     //product page
+
+    /**
+     * Display a single view of a product and list information information
+     * such as the minimum, maximum, and average price. This view also shows
+     * the average review score and list of customers interested in this product
+     * based on their order history.
+     *
+     * @param id the product id
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/product"})
-    public String productView(@RequestParam(value = "page", defaultValue = "0") int page,
-                              @RequestParam(value = "id") String id,
+    public String productView(@RequestParam(value = "id") String id,
                               Model model) {
-        if (page < 0) {
-            page = 0;
-        }
+
         float avgPrice, minPrice, maxPrice;
         maxPrice = minPrice = avgPrice = 0;
         int count = 0;
@@ -241,11 +276,24 @@ public class HelloController {
         model.addAttribute("min", minPrice);
         model.addAttribute("max", maxPrice);
         model.addAttribute("avg", avgPrice);
-        model.addAttribute("page", page);
         return "product";
     }
 
     //categories page
+
+    /**
+     * Displays categories along with their minimum, maximum, and average
+     * price values. It also contains a filter that sort queries that are
+     * chose from the user such as best-selling categories, average price
+     * from high to low and vice versa. It also displays certain information
+     * about the categories dataset, such as the number of items and the
+     * total average price of all categories.
+     *
+     * @param page the page number
+     * @param sort a filter that sort queries chosen by users
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping("/categories")
     public String categories(@RequestParam(value = "page", defaultValue = "0") int page,
                              @RequestParam(value = "sort", defaultValue = "highToLow") String sort,
@@ -343,6 +391,17 @@ public class HelloController {
 
 
     //category page
+
+    /**
+     * Display a single view category page that list information
+     * about a single category such as the products sold in this category
+     * and the number of items sold.
+     *
+     * @param page the page number
+     * @param id the category id
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/category"})
     public String categoryView(@RequestParam(value = "page", defaultValue = "0") int page,
                                @RequestParam(value = "id") String id,
@@ -386,7 +445,8 @@ public class HelloController {
                     "JOIN orders ON order_items.order_id = orders.order_id " +
                     "JOIN order_reviews ON orders.order_id = order_reviews.order_id " +
                     "where p.product_category_name ='" + id + "'and order_status = 'delivered' " +
-                    "group by p.product_id ");
+                    "group by p.product_id " +
+                    "LIMIT " + page * 50 + ",50");
             while (res.next()) {
                 products.add(new Product(res.getString("product_id"),
                         res.getString("product_category_name_english"),
@@ -424,6 +484,15 @@ public class HelloController {
     }
 
     //sellers page
+
+    /**
+     * Display a list of sellers and show information about a seller
+     * such as the number of sales and items delivered.
+     *
+     * @param page the page number
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping("/sellers")
     public String seller(@RequestParam(value = "page", defaultValue = "0") int page,
                          Model model) {
@@ -454,6 +523,16 @@ public class HelloController {
     }
 
     //seller single view page
+
+    /**
+     * Display a single view page of a seller and information
+     * about a seller given an id. This page also list products sold
+     * by the seller, along with the delivered to undelivered ratio.
+     *
+     * @param id the seller id
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/seller"})
     public String sellerView(@RequestParam(value = "id") String id,
                                Model model) {
@@ -513,8 +592,17 @@ public class HelloController {
     }
 
     //customer page
+
+    /**
+     * Display a list customers and information about the number of
+     * products bought and the total amount spent on the product.
+     *
+     * @param page the page number
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping("/customers")
-    public String customerView(@RequestParam(value = "page", defaultValue = "0") int page,
+    public String customer(@RequestParam(value = "page", defaultValue = "0") int page,
                                Model model) {
         List<Customer> customers = new ArrayList<>();
 
@@ -541,6 +629,17 @@ public class HelloController {
     }
 
     //single customer view page
+
+    /**
+     * Display a single view of the customer page when given
+     * an id. This page shows a list of the nearest sellers and
+     * a list of products bought by the customer along with the
+     * total amount spent.
+     *
+     * @param id the customer id
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping({"/customer"})
     public String customerView(@RequestParam(value = "id") String id,
                              Model model) {
@@ -617,6 +716,18 @@ public class HelloController {
     }
 
     //search page
+
+    /**
+     * Search for an id entered by the user. If an id is not
+     * found, it will redirect users to a not found page. If the
+     * id inputted by the user exist, it will find if the id is a
+     * product, seller, or customer. It will redirect users to a
+     * single view page given the id.
+     *
+     * @param query a given id from a user input
+     * @param model model to be populated with related variables
+     * @return the html page
+     */
     @GetMapping("/search")
     public String search(@RequestParam(value = "query") String query, Model model) {
         try {

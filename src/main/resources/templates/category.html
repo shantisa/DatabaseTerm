@@ -44,6 +44,12 @@
         </tbody>
     </table>
 
+    <div id="control">
+        <a id="page_control" th:href="@{'/category?page=' + ${prev} + '&id='+ ${category.getId()}}" th:with="prev=(${page} -1)"><button type="button">Previous</button></a>
+        <p id="page_current" th:text="${page}"></p>
+        <a id="page_control2" th:href="@{'/category?page=' + ${next} + '&id='+ ${category.getId()}}"  th:with="next=(${page}+1)"><button type="button">Next</button></a>
+    </div>
+
 
 </div>
 

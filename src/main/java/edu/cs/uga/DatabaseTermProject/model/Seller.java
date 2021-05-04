@@ -1,7 +1,10 @@
 package edu.cs.uga.DatabaseTermProject.model;
 
 /**
- *
+ * This class represents a seller. A seller contains an
+ * id, city, state, zip code, number of sales and item
+ * delivered by a seller. It also contains the distance and
+ * delivered to undelivered ratio.
  */
 public class Seller {
     /* Instance variables */
@@ -10,13 +13,15 @@ public class Seller {
     private float ratio, distance;
 
     /**
+     * Creates a seller with an id(name), city, state, zip code,
+     * number of items sold and delivered.
      *
-     * @param id
-     * @param city
-     * @param state
-     * @param sold
-     * @param delivered
-     * @param zipCode
+     * @param id the id(name) of a seller
+     * @param city the seller city
+     * @param state the seller state
+     * @param sold the number of sales by a seller
+     * @param delivered the number of items delivered by a seller
+     * @param zipCode the seller zip code
      */
     public Seller(String id, String city, String state, int sold, int delivered, int zipCode) {
         this.id = id;
@@ -30,10 +35,12 @@ public class Seller {
 
 
     /**
+     * Creates a seller with an id, number of items sold
+     * and delivered
      *
-     * @param id
-     * @param sold
-     * @param delivered
+     * @param id the id(name) of seller
+     * @param sold the number of sales
+     * @param delivered the number of items delivered
      */
     public Seller(String id, int sold, int delivered){
         this.id = id;
@@ -43,11 +50,13 @@ public class Seller {
     }
 
     /**
+     * Creates a seller with an id, city, state, and
+     * distance.
      *
-     * @param id
-     * @param city
-     * @param state
-     * @param distance
+     * @param id the id(name) of a seller
+     * @param city the seller city
+     * @param state the seller state
+     * @param distance the distance from a given a customer
      */
     public Seller(String id, String city, String state, float distance){
         this.id = id;
@@ -58,7 +67,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the distance from a given customer
      */
     public float getDistance() {
         return distance;
@@ -66,7 +75,7 @@ public class Seller {
 
     /**
      *
-     * @param distance
+     * @param distance sets the distance
      */
     public void setDistance(float distance) {
         this.distance = distance;
@@ -74,7 +83,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the id(name) of a seller
      */
     public String getId() {
         return id;
@@ -82,7 +91,7 @@ public class Seller {
 
     /**
      *
-     * @param id
+     * @param id sets the id of a seller
      */
     public void setId(String id) {
         this.id = id;
@@ -90,7 +99,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the seller city
      */
     public String getCity() {
         return city;
@@ -98,7 +107,7 @@ public class Seller {
 
     /**
      *
-     * @param city
+     * @param city sets the seller city
      */
     public void setCity(String city) {
         this.city = city;
@@ -106,7 +115,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the seller state
      */
     public String getState() {
         return state;
@@ -114,7 +123,7 @@ public class Seller {
 
     /**
      *
-     * @param state
+     * @param state sets the seller state
      */
     public void setState(String state) {
         this.state = state;
@@ -122,7 +131,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the number of sales
      */
     public int getSold() {
         return sold;
@@ -130,7 +139,7 @@ public class Seller {
 
     /**
      *
-     * @param sold
+     * @param sold sets the number of sales
      */
     public void setSold(int sold) {
         this.sold = sold;
@@ -138,7 +147,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the number of items delivered
      */
     public int getDelivered() {
         return delivered;
@@ -146,7 +155,7 @@ public class Seller {
 
     /**
      *
-     * @param delivered
+     * @param delivered sets the number of items delivered
      */
     public void setDelivered(int delivered) {
         this.delivered = delivered;
@@ -154,7 +163,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the seller zip code
      */
     public int getZipCode() {
         return zipCode;
@@ -162,7 +171,7 @@ public class Seller {
 
     /**
      *
-     * @param zipCode
+     * @param zipCode sets the seller zip code
      */
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
@@ -170,7 +179,7 @@ public class Seller {
 
     /**
      *
-     * @return
+     * @return the delivered to undelivered ratio of a seller
      */
     public float getRatio() {
         return ratio;

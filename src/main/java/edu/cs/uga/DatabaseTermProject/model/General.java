@@ -1,16 +1,23 @@
 package edu.cs.uga.DatabaseTermProject.model;
 
+/**
+ * This class represents database aggregate values,
+ * such as the average price, minimum price,
+ * maximum price, and the count.
+ */
 public class General {
     /* Instance variables */
     private float avgPrice, minPrice, maxPrice;
     private int count;
 
     /**
+     * Creates a general with the average price, minimum price,
+     * maximum price, and the count
      *
-     * @param avgPrice
-     * @param minPrice
-     * @param maxPrice
-     * @param count
+     * @param avgPrice the average price value of items in a dataset
+     * @param minPrice the minimum price value of an item in a dataset
+     * @param maxPrice the maximum price value of an item in a dataset
+     * @param count the number of items in a dataset
      */
     public General(float avgPrice, float minPrice, float maxPrice, int count) {
         this.avgPrice = avgPrice;
@@ -21,7 +28,7 @@ public class General {
 
     /**
      *
-     * @return
+     * @return the average price value of items
      */
     public float getAvgPrice() {
         return avgPrice;
@@ -29,7 +36,7 @@ public class General {
 
     /**
      *
-     * @param avgPrice
+     * @param avgPrice sets the average price of items
      */
     public void setAvgPrice(float avgPrice) {
         this.avgPrice = avgPrice;
@@ -37,7 +44,7 @@ public class General {
 
     /**
      *
-     * @return
+     * @return the minimum price value of items
      */
     public float getMinPrice() {
         return minPrice;
@@ -45,7 +52,7 @@ public class General {
 
     /**
      *
-     * @param minPrice
+     * @param minPrice sets the minimum price value
      */
     public void setMinPrice(float minPrice) {
         this.minPrice = minPrice;
@@ -53,7 +60,7 @@ public class General {
 
     /**
      *
-     * @return
+     * @return the maximum price value of items
      */
     public float getMaxPrice() {
         return maxPrice;
@@ -61,7 +68,7 @@ public class General {
 
     /**
      *
-     * @param maxPrice
+     * @param maxPrice sets the maximum price value
      */
     public void setMaxPrice(float maxPrice) {
         this.maxPrice = maxPrice;
@@ -69,7 +76,7 @@ public class General {
 
     /**
      *
-     * @return
+     * @return the number of items in a dataset
      */
     public int getCount() {
         return count;
@@ -77,7 +84,7 @@ public class General {
 
     /**
      *
-     * @param count
+     * @param count sets the number of items in a dataset
      */
     public void setCount(int count) {
         this.count = count;

@@ -1,7 +1,10 @@
 package edu.cs.uga.DatabaseTermProject.model;
 
 /**
- *
+ * This class represents a customer. Each customer has a id, which
+ * represents the customer name. A customer has a city, state,
+ *  zip code. The class also have the amount a customer has spent
+ *  on an item and the number of products bought.
  */
 public class Customer {
     /* Instance variables */
@@ -10,9 +13,11 @@ public class Customer {
     private float spent;
 
     /**
+     * Creates a customer with an id and the number of
+     * products bought.
      *
-     * @param id
-     * @param bought
+     * @param id the name(id) of the customer
+     * @param bought the number of products bought
      */
     public Customer(String id, int bought){
         this.id = id;
@@ -20,10 +25,12 @@ public class Customer {
     }
 
     /**
+     * Creates a customer with an id, number of products bought,
+     * and the amount of money spent on the items.
      *
-     * @param id
-     * @param bought
-     * @param spent
+     * @param id the name(id) of the customer
+     * @param bought the number of products bought
+     * @param spent the amount of money spent on the products purchased
      */
     public Customer(String id, int bought, float spent){
         this(id, bought);
@@ -31,13 +38,16 @@ public class Customer {
     }
 
     /**
+     * Creates a customer with an id, city, state, zip code,
+     * number of products bought, and the amount of money spent
+     * on the items.
      *
-     * @param id
-     * @param city
-     * @param state
-     * @param zipCode
-     * @param bought
-     * @param spent
+     * @param id the name(id) of the customer
+     * @param city the customer city
+     * @param state the customer state
+     * @param zipCode the customer zip code
+     * @param bought the number of products bought
+     * @param spent the amount of money spent on products purchased
      */
     public Customer(String id, String city, String state, int zipCode, int bought, float spent){
         this(id, bought);
@@ -49,7 +59,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the customer city
      */
     public String getCity() {
         return city;
@@ -57,7 +67,7 @@ public class Customer {
 
     /**
      *
-     * @param city
+     * @param city sets a customer city
      */
     public void setCity(String city) {
         this.city = city;
@@ -65,7 +75,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the customer state
      */
     public String getState() {
         return state;
@@ -73,7 +83,7 @@ public class Customer {
 
     /**
      *
-     * @param state
+     * @param state sets a customer state
      */
     public void setState(String state) {
         this.state = state;
@@ -81,7 +91,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the customer zip code
      */
     public int getZipCode() {
         return zipCode;
@@ -89,7 +99,7 @@ public class Customer {
 
     /**
      *
-     * @param zipCode
+     * @param zipCode sets a customer zip code
      */
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
@@ -97,7 +107,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the amount spent by a customer
      */
     public float getSpent() {
         return spent;
@@ -105,7 +115,7 @@ public class Customer {
 
     /**
      *
-     * @param spent
+     * @param spent sets the amount spent by a customer
      */
     public void setSpent(float spent) {
         this.spent = spent;
@@ -113,7 +123,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the customer id(name)
      */
     public String getId() {
         return id;
@@ -121,7 +131,7 @@ public class Customer {
 
     /**
      *
-     * @param id
+     * @param id sets the customer id(name)
      */
     public void setId(String id) {
         this.id = id;
@@ -129,7 +139,7 @@ public class Customer {
 
     /**
      *
-     * @return
+     * @return the number of items bought by a customer
      */
     public int getBought() {
         return bought;
@@ -137,7 +147,7 @@ public class Customer {
 
     /**
      *
-     * @param bought
+     * @param bought sets the number of items bought by a customer
      */
     public void setBought(int bought) {
         this.bought = bought;

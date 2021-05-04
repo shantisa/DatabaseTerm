@@ -1,7 +1,8 @@
 package edu.cs.uga.DatabaseTermProject.model;
 
 /**
- *
+ * This class represents a sold product. ProductSold contains the product
+ * id, the number of products sold and delivered. It also has the ratio.
  */
 public class ProductSold {
     /* Instance variables */
@@ -10,10 +11,12 @@ public class ProductSold {
     private float ratio;
 
     /**
+     * Creates a productsold that has a id, number of items sold
+     * and delivered
      *
-     * @param id
-     * @param sold
-     * @param delivered
+     * @param id the id(name) of the product
+     * @param sold the number of products sold
+     * @param delivered the number of products delivered
      */
     public ProductSold(String id, int sold, int delivered) {
         this.id = id;
@@ -24,7 +27,7 @@ public class ProductSold {
 
     /**
      *
-     * @return
+     * @return the product id(name)
      */
     public String getId() {
         return id;
@@ -32,7 +35,7 @@ public class ProductSold {
 
     /**
      *
-     * @param id
+     * @param id sets the product id(name)
      */
     public void setId(String id) {
         this.id = id;
@@ -40,7 +43,7 @@ public class ProductSold {
 
     /**
      *
-     * @return
+     * @return the number of products sold
      */
     public int getSold() {
         return sold;
@@ -48,7 +51,8 @@ public class ProductSold {
 
     /**
      *
-     * @param sold
+     * @param sold set the number of products sold
+     *
      */
     public void setSold(int sold) {
         this.sold = sold;
@@ -56,7 +60,7 @@ public class ProductSold {
 
     /**
      *
-     * @return
+     * @return the number of products delivered
      */
     public int getDelivered() {
         return delivered;
@@ -64,7 +68,7 @@ public class ProductSold {
 
     /**
      *
-     * @param delivered
+     * @param delivered set the number of products delivered
      */
     public void setDelivered(int delivered) {
         this.delivered = delivered;
@@ -72,7 +76,7 @@ public class ProductSold {
 
     /**
      *
-     * @return
+     * @return the ratio of a product, which the delivered to undelivered ratio
      */
     public float getRatio() {
         return ratio;
